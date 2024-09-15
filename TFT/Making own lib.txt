@@ -1,0 +1,7 @@
+Instance of Adafruit RA8875 -> (CS, Reset)
+Begin()
+displayOn(bool)
+GPIOX(bool)
+PWM1config(bool, RA8875_PWM_CLK_DIV1024 - Address)
+PWM1out(uint8 - 255)
+tft.fillScreen(Color Hex)
