@@ -8,7 +8,7 @@
 #include "driver/gpio.h"
 
 
-#define BLINK_LED 2	// Built-in LED
+#define BLINK_LED 2	// PIN 2
 
 #define ESP_OK          0       /*!< esp_err_t value indicating success (no error) */
 #define ESP_FAIL        -1      /*!< Generic esp_err_t code indicating failure */
@@ -31,8 +31,8 @@ void app_main(void)
 	{
 		// Set the pin to high, then low. Intervals of 1 sec
 		gpio_set_level(BLINK_LED, 1);
-		vTaskDelay(1000);
-		gpio_set_level(BLINK_LED, 0);
-		vTaskDelay(1000);
+		vTaskDelay(1000 / portTICK_PERIOD_MS); 	// vTaskDelay delays for number of sysTicks, therefore needs 
+		gpio_set_level(BLINK_LED, 0);			// conversion to ms
+		vTaskDelay(1000 / portTICK_PERIOD_MS);
 	}
 }
